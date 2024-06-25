@@ -4,6 +4,7 @@ import Sidebar from "./components/sidebar/sidbar";
 import GlobalStylesProvider from "./Providers/GlobalStylesProvider";
 import ContextProvider from './Providers/ContextProvider';
 import dynamic from "next/dynamic";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,24 +15,26 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        {/* <link
+    <ClerkProvider>
+      <html lang="en">
+        <head>
+          {/* <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
           crossorigin="anonymous"
           referrerpolicy="no-referrer"
         /> */}
-      </head>
-      <body className={inter.className}>
-        <ContextProvider>
-          <GlobalStylesProvider>
-            <Sidebar />
-            <div className="w-full">{children} </div>
-          </GlobalStylesProvider>
-        </ContextProvider>
-      </body>
-    </html>
+        </head>
+        <body className={inter.className}>
+          <ContextProvider>
+            <GlobalStylesProvider>
+              <Sidebar />
+              <div className="w-full">{children} </div>
+            </GlobalStylesProvider>
+          </ContextProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

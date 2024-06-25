@@ -8,6 +8,18 @@ const Tasks = () => {
   )
 }
 
-const TasksStyled = styled.div``
+const TasksStyled = styled.div`
+  width: 100%;
+  background-color: ${(props) => props.theme.colorBg2};
+  border: 2px solid ${(props) => props.theme.colorBg2};
+  border-radius: 1rem;
+  padding: 2rem;
+  overflow-y: auto;
 
-export default Tasks
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+`
+
+export default Tasks;
